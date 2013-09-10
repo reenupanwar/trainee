@@ -1,0 +1,51 @@
+<html>
+<head>
+    <style>
+        div.background
+        {
+            width:250px;
+            height:250px;
+            background:url(sun.jpg);
+            background-repeat: no-repeat;
+            border:2px solid black;
+        }
+        div.transbox
+        {
+            width:100px;
+            height:100px;
+            margin:75px ;
+            background-color:#ffffff;
+            border:1px solid black;
+            opacity:0.6;
+            filter:alpha(opacity=60); /* For IE8 and earlier */
+        }
+        div.transbox : hover
+        {
+            opacity: 1.0;
+            filter:alpha(opacity=100);
+        }
+        div.transbox p
+        {
+
+            font-weight:bold;
+            color:#000000;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="background">
+    <div class="transbox">
+        <p>This is some text that is placed in the transparent box.
+            This is some text that is placed in the transparent box.
+            This is some text that is placed in the transparent box.
+            This is some text that is placed in the transparent box.
+            This is some text that is placed in the transparent box.
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

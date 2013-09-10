@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body> <div id="fname"></div>
+<script>
+    if(typeof(Storage) !== "Undefined")
+    {   localStorage.fname = "Ajay";
+        document.getElementById("fname").innerHTML ="" + localStorage.fname;
+        document.getElementById("fn").innerHTML = "" + localStorage.fname;
+
+
+    }
+    else
+    {
+    document.write("Not supported");
+    }
+</script>
+First Name
+<input type="text" id="fn">
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<img id="image" src="sun.jpg">
+<canvas id="cnvs" height="500" width="500">
+</canvas>
+<script>
+  var c =  document.getElementById('cnvs');
+    var b = c.getContext("2d") ;
+    b.fillStyle= '#000000';
+  b.fillRect(100,0,100,100);
+  b.moveTo(0,0);
+  b.lineTo(100,100);
+  b.stroke();
+  b.beginPath(50,10);
+  b.arc(10,10,10,10,10,10);
+  b.stroke();
+    var d = c.getContext("2d");
+  var e= d.createLinearGradient( 0,0,200,0)
+  e.addColorStop(0, "red");
+  e.addColorStop(1, "white");
+  d.fillStyle = e;
+  d.fillRect(100,100,100,100);
+  var f= c.getContext("2d");
+    var img = document.getElementById('image');
+  f.drawImage(img,100,200);
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+if(typeof(EventSource) !== "undefined")
+{  var a = new EventSource();
+    a.onmessage = function(event)
+    {   document.getElementById("result").innerHTML+= event.data + "<br>";
+
+    };
+}
+    else
+{
+    document.getElementById("result").innerHTML ="Sorry,  Not supported";
+}
+</script>
+<div id="result"></div>
+</body>
+</html>

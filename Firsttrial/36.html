@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var txt="";
+        function message()
+        {
+            try
+            {
+                alert("Welcome guest!");
+            }
+            catch(err)
+            {
+                txt="There was an error on this page.\n\n";
+                txt+="Error description: " + err.message + "\n\n";
+                txt+="Click OK to continue.\n\n";
+                alert(txt);
+            }
+        }
+        function msg()
+        {
+            try
+            {
+                adalert("Welcome!");
+            }
+            catch (err)
+            {
+                txt=("Dere is an error on d page");
+                txt+="Description: " + err.msg;
+                alert(txt);
+            }
+        }
+    </script>
+</head>
+
+<body>
+<input type="button" value="View message" onclick="message()" />
+<input type="button" value="error message" onclick="msg()">
+</body>
+
+</html>

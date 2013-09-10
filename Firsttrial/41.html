@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+</head>
+<body>
+<div id="dv">
+    <p id="para1">This is a para</p>
+    <p id="para2"> This is another para</p>
+</div>
+<script>
+    var para = document.createElement("p") ;
+    var node = document.createTextNode("this is the child para");
+    para.appendChild(node);
+
+  //  var a = document.getElementById("dv");
+    //a.appendChild(para);
+
+    var b= document.getElementById("para1");
+    b.parentNode.removeChild(b);
+
+</script>
+
+</body>
+</html>
