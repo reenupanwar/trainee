@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7dbccc39-a8cc-47b7-ba22-e64a606995cb" name="Default" comment="commit clock">
+    <list default="true" id="7dbccc39-a8cc-47b7-ba22-e64a606995cb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="trainee.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="7dbccc39-a8cc-47b7-ba22-e64a606995cb" time="1378899859594" ignored="false" />
+    <file path="/Dummy.txt" changelist="7dbccc39-a8cc-47b7-ba22-e64a606995cb" time="1378899990837" ignored="false" />
     <file path="$PROJECT_DIR$/../trainee1/index.html" changelist="7dbccc39-a8cc-47b7-ba22-e64a606995cb" time="1378729872281" ignored="false" />
     <file path="/try.html" changelist="7dbccc39-a8cc-47b7-ba22-e64a606995cb" time="1378795525892" ignored="false" />
     <file path="/index.html" changelist="7dbccc39-a8cc-47b7-ba22-e64a606995cb" time="1378811225821" ignored="false" />
@@ -383,7 +383,11 @@
       <created>1378898445311</created>
       <updated>1378898445311</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="commit clock">
+      <created>1378899994144</created>
+      <updated>1378899994144</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
