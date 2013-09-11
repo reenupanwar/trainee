@@ -32,3 +32,11 @@
 </div>
 </body>
 </html>
+function getsupportedprop(proparray){
+var root=document.documentElement ;
+for (var i=0; i<proparray.length; i++){
+if (proparray[i] in root.style){
+return proparray[i];
+}
+}
+}
