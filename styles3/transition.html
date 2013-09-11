@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div#first
+        {  width:100px;
+            height:100px;
+            background:red;
+
+            transition:width ;
+            transition:height 2s,transform 2s;
+
+        }
+
+        div#first:hover
+        {
+            width:500px;
+            height: 500px;
+            transform:rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+
+  <div id="main" style="height: 500px; width: 500px;background-color: blue">
+
+<div id="first"></div>
+  </div>
+
+<p>Hover over the div element above, to see the transition effect.</p>
+
+</body>
+</html>
