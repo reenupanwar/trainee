@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rotation by CSS3</title>
+
+    <script>
+
+        var a, b,c;
+        var csstransform;
+        var tym;
+        function showtym()
+        {   csstransform=getsupportedprop(['transform', 'MozTransform', 'WebkitTransform', 'msTransform', 'OTransform']);
+            tym = setInterval(function(){startTime()},1000);
+
+            a = document.getElementById('hour');
+
+            b = document.getElementById('min');
+            c = document.getElementById('sec');
+
+        }
+        function startTime()
+        {
+            var day =new Date();
+            var h=day.getHours();
+            var m=day.getMinutes();
+            var s=day.getSeconds();
+            h=checkTime(h);
+            m=checkzero(m);
+            s=checkzero(s);
+            document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+            a.style[csstransform]= "rotate("+30*h+"deg)";
+            b.style[csstransform]= "rotate("+6*m+"deg)";
+            c.style[csstransform]= "rotate("+6*s+"deg)";
+
+        }
+
+        function checkTime(i)
+        {
+            if (i>12)
+            {
+                i= i-12;
+            }
+            return i;
+        }
+        function checkzero(i)
+        {
+            if(i<10)
+            { i= "0" + i;
+            }
+            return i;
+        }
+        function getsupportedprop(proparray){
+            var root=document.documentElement ;
+            for (var i=0; i<proparray.length; i++){
+                if (proparray[i] in root.style){
+                    return proparray[i];
+                }
+            }
+        }
+
+    </script>
+
+
+</head>
+<body onload="showtym()">
+<div id="main" style="height: 800px;width: 1000px;background-color: #0480be">
+    <div  id="txt" style="height: 600px;width: 200px;float: left"></div>
+    <div id="container" style="height:600px;width:600px; background-color:purple;float: left">
+
+        <div id="first" style="height:30px;width: 600px; ">
+            <div style="font-size: 25px;margin-left: 285px">12</div>
+        </div>
+        <div id="second" style="height: 570px;width: 600px;">
+            <div id="left" style="height:270px;width: 285px;float: left">
+                <div style="height:270px"></div>
+                <div style="height: 30px;font-size: 25px;margin-top: -12px;margin-left: 8px;">9</div>
+                <div style="height: 270px"></div>
+            </div>
+            <div id="middle" style="width: 30px;height:570px;float: left">
+                <div style="height: 540px">
+
+                    <div id="sec" style="width: 2px;height: 526px;margin-left: 14px;margin-top: 8px;">
+                        <div style="height: 260px;background-color: #000000"></div>
+                        <div style="height: 260px"></div>
+                    </div>
+                    <div id="min" style="width: 6px;height: 518px;margin-top: -520px;margin-left: 10px;">
+                        <div style="height: 259px;background-color: maroon"></div>
+                        <div style="height: 259px;"></div>
+                    </div>
+                    <div id="hour" style="width:8px;height: 400px;margin-top:-463px;margin-left:12px">
+                        <div style="height: 200px;background-color: navy">.</div>
+                        <div style="height: 200px"></div>
+                    </div>
+
+
+
+                </div>
+                <div id="bot" style="height: 32px;font-size: 25px;margin-left: 6px;margin-top: -6px;">6</div>
+            </div>
+
+            <div id="right" style="font-size: 25px;width: 284px;height:570px;float: left;">
+                <div style="height:270px"></div>
+                <div style="height: 30px;font-size: 25px;margin-left: 255px;margin-top: -12px">3</div>
+                <div style="height: 270px"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
