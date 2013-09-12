@@ -1,0 +1,24 @@
+<html>
+<script>
+    function change()
+    {
+    document.getElementById('image').src = "sunrise.jpg"
+    }
+    function resize(x)
+    {x.style.height ="500px";
+        x.style.width = "500px";
+
+    }
+    function small(x)
+    {
+        x.style.height = "100px";
+        x.style.width= "100px";
+    }
+</script>
+<body>
+<div>
+    <img id="image" src="images.jpg" height="100px" width="100px" onmousedown="resize(this);" onmouseup= "small(this)">
+    <input type="button" onclick="change()" value="ImgChange">
+</div>
+</body>
+</html>
