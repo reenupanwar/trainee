@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div #first
+        {
+            width:200px;
+            height:200px;
+            background:red;
+            animation:myfirst 10s;
+            -webkit-animation:myfirst 10s; /* Safari and Chrome */
+        }
+        div #second
+        {   position: relative;
+            height: 300px;
+            width: 300px;
+           -webkit-animation:percentage 10s;
+        }
+
+        @keyframes myfirst
+        {
+            from {background:red;}
+            to {background:yellow;}
+        }
+        @-webkit-keyframes percentage /* Safari and Chrome */
+        {
+            0%   {background:red;}
+            25%  {background:yellow;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green;}
+            100% {background:red;}
+        }
+
+    </style>
+</head>
+<body>
+<div id="main" style="height: 500px;width: 500px">
+
+<p><b>Note:</b> This example does not work in Internet Explorer 9 and earlier versions.</p>
+
+<div id="first"></div>
+    <div id="second"></div>
+</div>
+
+</body>
+</html>
