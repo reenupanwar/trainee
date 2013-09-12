@@ -15,6 +15,9 @@
             height: 300px;
             width: 300px;
            -webkit-animation:percentage 10s;
+            -webkit-animation-iteration-count:3;
+            -webkit-animation-direction:alternate;
+            -webkit-animation-play-state:running;
         }
 
         @keyframes myfirst
@@ -28,7 +31,7 @@
             25%  {background:yellow;}
             50%  {background:blue; left:200px; top:200px;}
             75%  {background:green;}
-            100% {background:red;}
+            100% {background:red;left: 400px;top: 0px;}
         }
 
     </style>
