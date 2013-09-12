@@ -1,0 +1,32 @@
+<html>
+<head>
+    <style>
+        div #first
+        {
+           -moz-transform:rotateY(60deg);
+           -moz-backface-visiblity:hidden;
+        }
+        div #second{
+            -moz-transform:rotateY(180deg);
+            -moz-backface-visibility:visible;
+        }
+        div #third{
+            -moz-transform:matrix(0.5,0.0,0.0,2,1,1);
+        }
+    </style>
+
+</head>
+<body>
+<div id="main" style="height: 500px;width: 500">
+    <div id="first" style="height: 100px;width: 100px;float: left;background-color: rosybrown">
+      hello
+    </div>
+    <div id="second" style="height: 100px;width: 100px;float: left;background-color: blue">
+         heyyy
+    </div>
+    <div id="third" style="height: 100px;width: 100px;float: left;background-color:papayawhip">
+          how are you??
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<html>
+<body>
+<p id="first">hello</p>
+Enter Your Name
+<input id="name" type="text">
+<input type="button" onclick="fn()" value="click">
+<script>
+     function fn()
+     {
+         var a= document.getElementById("name").value;
+         document.getElementById("first").innerHTML= a;
+     }
+</script>
+</body>
+</html>
