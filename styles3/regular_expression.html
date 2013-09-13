@@ -6,8 +6,9 @@
         {  try{
 
 
-            var re= new RegExp("document.getElementById('name').value");
-            if(re.test("[A-z]") !=true)
+            var re= new RegExp("[A-z]");
+            console.log(re);
+            if(re.test(document.getElementById('name').value) !=true)
             {
                 alert("Enter alphabet in Name");
             }
