@@ -1,7 +1,9 @@
 <html>
 <head>
     <script>
-        var a ;
+
+
+        var re1 = new RegExp("[0-9]");
         function check()
         {  try{
 
@@ -12,11 +14,25 @@
             {
                 alert("Enter alphabet in Name");
             }
+            else
+            if(re1.test(document.getElementById('phone').value) !=true)
+
+            {
+                alert("Enter numbers in Phone no.");
+            }
+            else
+            { var a= document.getElementById('phone').value;
+            if(a.length<10)
+            {
+                alert(" Phone no Must have 10 digits! ")
+            }
+            }
         }
             catch (err)
             {
                 alert(err.message);
             }
+
         }
     </script>
 </head>
@@ -24,6 +40,8 @@
 <h1></h1>
 Name
 <input type="text" id="name">    <br>
+Phone No
+<input type="text" id="phone"> <br>
 <input type="button" onclick="return check()" value="submit">
 </body>
 </html>
