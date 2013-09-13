@@ -1,0 +1,35 @@
+<html>
+<body>
+<script>
+    var x = new String("Hello world how are you ? are you there?");
+    document.write(x + "<br>");
+    document.write("Length of string is " + x.length + "<br>");
+    document.write(x.toUpperCase() + "<br>");
+    document.write("The array of string Is: "+ "<br>");
+    var arr = x.split(" ");
+    for (var i = 0; i < arr.length; i++) {
+        document.write(arr[i] + "<br>");
+    }
+    document.write(x.trim() + "<br>");
+    document.write(x.indexOf('are') + "<br>");
+    document.write(x.lastIndexOf('are') + "<br>");
+    document.write(x.match('how') + "<br>");
+    document.write(x.match('heyy') + "<br>");
+    document.write(x.indexOf('how') + "<br>");
+    document.write(x.replace('are' ,'r' ) + "<br>");
+    document.write(x.valueOf() + "<br>");
+    document.write(x.indexOf('how') + "<br>");
+    document.write(x.search('are') + "<br>");
+    document.write(x.charAt(6) + "<br>");
+    document.write(x.charCodeAt(5) + "<br>");
+
+    document.write(x.slice(4) + "<br>");
+    document.write(x.substr(4, 9) + "<br>");
+    document.write(x.substring(5) + "<br>");
+
+
+
+
+</script>
+</body>
+</html>
