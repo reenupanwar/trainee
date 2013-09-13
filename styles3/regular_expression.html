@@ -1,0 +1,28 @@
+<html>
+<head>
+    <script>
+        var a ;
+        function check()
+        {  try{
+
+
+            var re= new RegExp("document.getElementById('name').value");
+            if(re.test("[A-z]") !=true)
+            {
+                alert("Enter alphabet in Name");
+            }
+        }
+            catch (err)
+            {
+                alert(err.message);
+            }
+        }
+    </script>
+</head>
+<body>
+<h1></h1>
+Name
+<input type="text" id="name">    <br>
+<input type="button" onclick="return check()" value="submit">
+</body>
+</html>
