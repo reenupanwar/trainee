@@ -70,17 +70,20 @@ function valid() {
 
     }
     checkphone();
-    if (document.forms["myform"]['Day'].value == "0") {
+    var p = document.forms["myform"]['Day'].value
+    if (p == "0") {
         alert("select ur date of birth");
         Day.focus();
         return false;
     }
-    if (document.forms["myform"]['Month'].value == "0") {
+    var q = document.forms["myform"]['Month'].value
+    if (q== "0") {
         alert("select ur date of birth");
         Month.focus();
         return false;
     }
-    if (document.forms["myform"]['Year'].value == "0") {
+    var r= document.forms["myform"]['Year'].value
+    if (r == "0") {
         alert("select ur date of birth");
         Year.focus();
         return false;
@@ -122,7 +125,14 @@ function valid() {
             return false;
         }
     }
+    if(r)
+    {   var txt = "Your registration has been completed.   To login click on Login button. ";
 
+        alert (txt);
+    }
+    if(r)
+    {document.getElementById("msg").innerHTML = "<input type='button' value='Login' class='submit' onclick='login()'> ";
+    }
     console.log('z========', x);
     if (true) {
         localStorage.firstname = x;
@@ -131,6 +141,7 @@ function valid() {
         localStorage.password= b;
         localStorage.gender =  getGender();
         localStorage.phone= a;
+        localStorage.dob = (p +"-"+ q  + "-" + r );
 
         document.getElementById("result").innerHTML = "First name: " + localStorage.firstname +"<br>"
         + "Last Name: " + localStorage.lastname +"<br>"
@@ -138,15 +149,20 @@ function valid() {
             + "Password: " + localStorage.password +"<br>"
             + "Gender: " + localStorage.gender  +"<br>"
             + "Phone No: " + localStorage.phone  +"<br>"
-
+            + "Dob: " + localStorage.dob + "<br>"
             ;
     }
 
     return false;
 
 
+
 }
 
+
+function login(){
+    window.location.href = "login.html";
+}
 
 
 
