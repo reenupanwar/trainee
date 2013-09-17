@@ -1,0 +1,86 @@
+#main{
+    height: 500px;
+    width: 1000px;
+}
+#header{
+    height: 50px;
+    width: 1000px;
+
+}
+#container{
+    height: 400px;
+    width: 1000px;
+
+
+}
+#footer{
+    height: 50px;
+    width: 1000px;
+
+
+}
+#reg{
+    text-align: center;
+}
+#leftcontent{
+    height: 400px;
+    width: 300px;
+    float: left;
+}
+#rightcontent{
+    height: 400px;
+    width: 700px;
+    float: left;
+}
+.left{
+    height: 10%;
+    width: 30%;
+   margin-left: 20px;
+
+    float: left;
+    font-size: 24px;
+}
+.right{
+    height: 10%;
+    width: 50%;
+    float: left;
+    margin-left: 10px;
+}
+.txtstyle{
+    height: 25px;
+    width: 200px;
+    border-color: maroon;
+}
+#dd{
+    height: 25px;
+    width: 50px;
+    border-color: maroon;
+    float: left;
+}
+#mm{
+    height: 25px;
+    width: 75px;
+    border-color: maroon;
+    float: left;
+}
+#yy{
+    height: 25px;
+    width: 75px;
+    border-color: maroon;
+    float: left;
+}
+.btn{
+    height: 9%;
+    width: 100%;
+}
+.submit{
+    border-color: maroon;
+    margin-left: 220px;
+
+}
+#result
+{
+    height: auto;
+    width: 1000px;
+    background-color: blueviolet;
+}

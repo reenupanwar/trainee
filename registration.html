@@ -1,0 +1,113 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="regstyle.css">
+    <script src="regscript.js">
+
+    </script>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <h1 id="reg">Registration Form</h1>
+    </div>
+    <div id="container">
+        <div id="leftcontent">
+
+        </div>
+
+        <div id="rightcontent">
+            <form name="myform" onsubmit="return valid();" action=" ">
+                <div class="btn">
+                    <div class="left">
+                        First Name
+                    </div>
+                    <div class="right">
+                        <input type="text" name="fname" class="txtstyle">
+                    </div>
+                </div>
+                <div class="btn">
+                    <div class="left">
+                        Last Name
+                    </div>
+                    <div class="right">
+                        <input type="text" name="lname" class="txtstyle">
+                    </div>
+                </div>
+                <div class="btn">
+                    <div class="left">
+                        Email-Id
+                    </div>
+                    <div class="right">
+                        <input type="text" name="email" class="txtstyle">
+                    </div>
+                </div>
+                <div class="btn">
+                    <div class="left">
+                        Password
+                    </div>
+                    <div class="right">
+                        <input type="password" name="password" class="txtstyle">
+                    </div>
+                </div>
+                <div class="btn">
+                    <div class="left">
+                        Gender
+                    </div>
+                    <div class="right">
+                        <input type="radio" name="gender" value="male">Male
+                        <input type="radio" name="gender" value="female"> Female
+                    </div>
+                </div>
+                <div class="btn">
+                    <div class="left">
+                        Phone No.
+                    </div>
+                    <div class="right">
+                        <input type="text" name="phone" class="txtstyle">
+
+                    </div>
+                </div>
+                <div class="btn">
+                    <div class="left">
+                        Date of Birth
+                    </div>
+                    <div class="right">
+
+                        <select name="Day" id="dd">
+                            <option value="0" selected>DD</option>
+                            <option value="1">1
+                            <option value="2">2
+                            <option value="3">3
+                        </select>
+                        <select name="Month" id="mm">
+                            <option value="0" selected>MM</option>
+                            <option value="1">Jan
+                            <option value="2">Feb
+                            <option value="3">mar
+                        </select>
+                        <select name="Year" id="yy">
+                            <option value="0" selected>YY</option>
+                            <option value="1">1987
+                            <option value="2">1988
+                            <option value="3">1989
+                        </select>
+                    </div>
+                </div>
+                <div class="btn">
+                    <input type="submit" value="submit" class="submit">
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+    <div id="footer">
+
+    </div>
+</div>
+<div id=result>
+
+</div>
+</body>
+</html>
