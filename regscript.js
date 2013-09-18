@@ -1,61 +1,51 @@
 // validation code
+//var test = localStorage.test ? localStorage.test : [];
 var test = [];
 var re = new RegExp("[A-z]");
 var re1 = new RegExp("[0-9]");
-var re2 = new RegExp("[\s]");
+var re2 = new RegExp("[\S]");
 showData();
-/*function insertrow(value)
+/* function insertrow(value)
 {
 var table = document.getElementById("mytable");
 
 var tr = document.createElement("tr"),
-    td1 = document.createElement("td"),
-    td2 = document.createElement("td"),
-    td3 = document.createElement("td"),
-    td4 = document.createElement("td"),
-    td5 = document.createElement("td"),
-    td6 = document.createElement("td"),
-    td7 = document.createElement("td");
-    td1.appendChild(document.createTextNode(value.firstname));
-    td2.appendChild(document.createTextNode(value.lastname));
-    td3.appendChild(document.createTextNode(value.email));
-    td4.appendChild(document.createTextNode(value.password));
-    td5.appendChild(document.createTextNode(value.gender));
-    td6.appendChild(document.createTextNode(value.phone));
-    td7.appendChild(document.createTextNode(value.dob));
+    td1 = document.createElement("td");
+    td2 = document.createElement("td")
+    td3 = document.createElement("td")
+    td = document.createElement("td")
+    td1 = document.createElement("td")
+    td1 = document.createElement("td")
 
-    tr.appendChild(td1);
-    tr.appendChild(td2);
-    tr.appendChild(td3);
-    tr.appendChild(td4);
-    tr.appendChild(td5);
-    tr.appendChild(td6);
-    tr.appendChild(td7);
+td.appendChild(document.createTextNode(value.firstname));
+
+// note the reverse order of adding child
+tr.appendChild(td);
+
 
 table.appendChild(tr);
 table.innerHTML += table.appendChild(tr);
-}      */
-
-
-
+}   */
 function showData(){
     if (localStorage.test) {
         var data = JSON.parse(localStorage.test);
         for (var i = 0; i < data.length; i++) {
             var value = data[i];
-            var txt = +value.firstname + " " +
+            var txt = value.firstname + " " +
                 value.lastname + " " + value.email + " " + value.password + " "
                 + value.gender + " " + value.phone + " " + value.dob + "<br>";
             var table = document.getElementById("mytable");
-                   //insertrow(value);
-                 table.innerHTML += txt;
+
+           // insertrow(value);
+            table.innerHTML += txt;
 
 
         }
     }
 }
 
-function valid() {
+function valid(e) {
+    e.preventDefault();
     var x = document.forms["myform"]["fname"].value;
     if (x == null || x == "") {
         alert("First name must be filled out");
@@ -78,12 +68,6 @@ function valid() {
         return false;
     }
     checkemail();
-    /*if ((document.forms["myform"]["gender"].checked == false) &&
-     (document.forms["myform"]["female"].checked == false)) {
-     alert("Please Select your gender!")
-     return false;
-     }*/
-
 
     function getGender() {
         var radio = document.getElementsByName("gender");
@@ -108,7 +92,7 @@ function valid() {
     }
     checkpassword();
     function checkpassword() {
-        if (re.test(document.forms["myform"]["password"].value) != true) {
+        if (re2.test(document.forms["myform"]["password"].value) == true) {
             alert("Dont Enter space in password");
             password.focus();
             return false;
@@ -189,12 +173,14 @@ function valid() {
         data.gender = getGender();
         data.phone = a;
         data.dob = (p + "-" + q + "-" + r );
-
+        if(typeof test == "string") {
+            test = JSON.parse(test);
+        }
         test.push(data);
         localStorage.test = JSON.stringify(test);
 
     }
-    //showData();
+    showData();
     return false;
 }
 
