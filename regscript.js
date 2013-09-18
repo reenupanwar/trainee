@@ -1,7 +1,60 @@
 // validation code
+var test = [];
 var re = new RegExp("[A-z]");
 var re1 = new RegExp("[0-9]");
-var re2 = new RegExp("[\s]")
+var re2 = new RegExp("[\s]");
+showData();
+/*function insertrow(value)
+{
+var table = document.getElementById("mytable");
+
+var tr = document.createElement("tr"),
+    td1 = document.createElement("td"),
+    td2 = document.createElement("td"),
+    td3 = document.createElement("td"),
+    td4 = document.createElement("td"),
+    td5 = document.createElement("td"),
+    td6 = document.createElement("td"),
+    td7 = document.createElement("td");
+    td1.appendChild(document.createTextNode(value.firstname));
+    td2.appendChild(document.createTextNode(value.lastname));
+    td3.appendChild(document.createTextNode(value.email));
+    td4.appendChild(document.createTextNode(value.password));
+    td5.appendChild(document.createTextNode(value.gender));
+    td6.appendChild(document.createTextNode(value.phone));
+    td7.appendChild(document.createTextNode(value.dob));
+
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tr.appendChild(td4);
+    tr.appendChild(td5);
+    tr.appendChild(td6);
+    tr.appendChild(td7);
+
+table.appendChild(tr);
+table.innerHTML += table.appendChild(tr);
+}      */
+
+
+
+function showData(){
+    if (localStorage.test) {
+        var data = JSON.parse(localStorage.test);
+        for (var i = 0; i < data.length; i++) {
+            var value = data[i];
+            var txt = +value.firstname + " " +
+                value.lastname + " " + value.email + " " + value.password + " "
+                + value.gender + " " + value.phone + " " + value.dob + "<br>";
+            var table = document.getElementById("mytable");
+                   //insertrow(value);
+                 table.innerHTML += txt;
+
+
+        }
+    }
+}
+
 function valid() {
     var x = document.forms["myform"]["fname"].value;
     if (x == null || x == "") {
@@ -26,10 +79,10 @@ function valid() {
     }
     checkemail();
     /*if ((document.forms["myform"]["gender"].checked == false) &&
-        (document.forms["myform"]["female"].checked == false)) {
-        alert("Please Select your gender!")
-        return false;
-    }*/
+     (document.forms["myform"]["female"].checked == false)) {
+     alert("Please Select your gender!")
+     return false;
+     }*/
 
 
     function getGender() {
@@ -77,12 +130,12 @@ function valid() {
         return false;
     }
     var q = document.forms["myform"]['Month'].value
-    if (q== "0") {
+    if (q == "0") {
         alert("select ur date of birth");
         Month.focus();
         return false;
     }
-    var r= document.forms["myform"]['Year'].value
+    var r = document.forms["myform"]['Year'].value
     if (r == "0") {
         alert("select ur date of birth");
         Year.focus();
@@ -125,42 +178,28 @@ function valid() {
             return false;
         }
     }
-    if(r)
-    {   var txt = "Your registration has been completed.   To login click on Login button. ";
 
-        alert (txt);
-    }
-    if(r)
-    {document.getElementById("msg").innerHTML = "<input type='button' value='Login' class='submit' onclick='login()'> ";
-    }
-    console.log('z========', x);
-    if (true) {
-        localStorage.firstname = x;
-        localStorage.lastname = y;
-        localStorage.email = z;
-        localStorage.password= b;
-        localStorage.gender =  getGender();
-        localStorage.phone= a;
-        localStorage.dob = (p +"-"+ q  + "-" + r );
+    if (x) {
 
-        document.getElementById("result").innerHTML = "First name: " + localStorage.firstname +"<br>"
-        + "Last Name: " + localStorage.lastname +"<br>"
-            + "Email_id: " + localStorage.email +"<br>"
-            + "Password: " + localStorage.password +"<br>"
-            + "Gender: " + localStorage.gender  +"<br>"
-            + "Phone No: " + localStorage.phone  +"<br>"
-            + "Dob: " + localStorage.dob + "<br>"
-            ;
-    }
+        var data = {};
+        data.firstname = x;
+        data.lastname = y;
+        data.email = z;
+        data.password = b;
+        data.gender = getGender();
+        data.phone = a;
+        data.dob = (p + "-" + q + "-" + r );
 
+        test.push(data);
+        localStorage.test = JSON.stringify(test);
+
+    }
+    //showData();
     return false;
-
-
-
 }
 
 
-function login(){
+function login() {
     window.location.href = "login.html";
 }
 
