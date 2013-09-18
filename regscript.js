@@ -1,45 +1,29 @@
 // validation code
-//var test = localStorage.test ? localStorage.test : [];
-var test = [];
+var test = localStorage.test ? localStorage.test : [];
+
 var re = new RegExp("[A-z]");
 var re1 = new RegExp("[0-9]");
 var re2 = new RegExp("[\S]");
 showData();
-/* function insertrow(value)
+ function insertrow(value)
 {
-var table = document.getElementById("mytable");
-
-var tr = document.createElement("tr"),
-    td1 = document.createElement("td");
-    td2 = document.createElement("td")
-    td3 = document.createElement("td")
-    td = document.createElement("td")
-    td1 = document.createElement("td")
-    td1 = document.createElement("td")
-
-td.appendChild(document.createTextNode(value.firstname));
-
-// note the reverse order of adding child
-tr.appendChild(td);
-
-
-table.appendChild(tr);
-table.innerHTML += table.appendChild(tr);
-}   */
+   var tr = '<tr><td>'+value.firstname+'</td><td>'
+           +value.lastname+'</td><td>'+value.email+'</td><td>'
+           +value.password+'</td><td>'+value.gender+'</td><td>'
+           +value.phone+'</td><td>'+value.dob+'</td></tr>'
+   return tr;
+}
 function showData(){
     if (localStorage.test) {
         var data = JSON.parse(localStorage.test);
         for (var i = 0; i < data.length; i++) {
             var value = data[i];
-            var txt = value.firstname + " " +
+           /* var txt = value.firstname + " " +
                 value.lastname + " " + value.email + " " + value.password + " "
-                + value.gender + " " + value.phone + " " + value.dob + "<br>";
-            var table = document.getElementById("mytable");
-
-           // insertrow(value);
-            table.innerHTML += txt;
-
-
+                + value.gender + " " + value.phone + " " + value.dob + "<br>";  */
+            var table = document.getElementById("tableBody");
+            var html = insertrow(value);
+            table.innerHTML += html;
         }
     }
 }
