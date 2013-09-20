@@ -24,9 +24,9 @@ function showData() {
         }
     }
 }
-function valid(e) {
-    e.preventDefault();
-    var myform = document.forms['myform'];
+function valid() {
+
+    var form = document.forms['myform'];
     var ary = [checkfname, checklname, checkemail, checkpassword, checkphone, checkdob, getGender];
     var rtn = true;
     var i = 0;
@@ -35,26 +35,52 @@ function valid(e) {
             rtn = false;
         }
     }
+    if (rtn) {
+         var data = {};
+        data.firstname = document.forms["myform"]["fname"].value;
+        //console.log(data.firstname);
+
+        data.lastname = document.forms["myform"]["lname"].value;
+        data.email = document.forms["myform"]["email"].value;
+        data.password = document.forms["myform"]["password"].value;
+
+        data.gender = getGenderValue();
+        data.phone = document.forms["myform"]["phone"].value;
+
+        data.dob = (document.forms["myform"]['Day'].value
+            + "-" + document.forms["myform"]['Month'].value + "-"
+            + document.forms["myform"]['Year'].value );
+        //console.log(data.dob);
+       // console.log(typeof (test));
+        if (typeof test == "string") {
+            test = JSON.parse(test);
+            console.log(typeof (test));
+        }
+        test.push(data);
+        console.log(test);
+
+        localStorage.test = JSON.stringify(test);
+
+        showData();
+    }
     return rtn;
-
-
 }
 
 
-function checkfname(myform) {
+function checkfname() {
     var eobj = document.getElementById('fnameerr');
     eobj.innerHTML = '';
     var msg;
     var x = document.forms["myform"]["fname"].value;
     var error = false;
     if (x == null || x == "") {
-         msg = 'Error: Field name must be filled out.';
-        error=true;
+        msg = 'Error: Field name must be filled out.';
+        error = true;
 
     }
     else if (re.test(document.forms["myform"]["fname"].value) != true) {
         msg = "First name must contain Character.";
-        error=true;
+        error = true;
 
     }
     if (error) {
@@ -63,75 +89,83 @@ function checkfname(myform) {
         return false;
     }
     else
-    return true;
+        return true;
 }
 
-function checklname(myform) {
+function checklname() {
     var eobj = document.getElementById('lnameerr');
     var y = document.forms["myform"]["lname"].value;
     eobj.innerHTML = '';
     var error = false;
+    var msg;
     if (y == null || y == "") {
-        error = 'Error:Last name must be filled out.';
-        myform.lname.focus();
+        msg = 'Error:Last name must be filled out.';
+        error= true;
     }
     else if (re.test(document.forms["myform"]["lname"].value) != true) {
-        error = "Last name must contain Character.";
+        msg = "Last name must contain Character.";
+        error= true;
     }
     if (error) {
         myform.lname.focus();
-        eobj.innerHTML = error;
+        eobj.innerHTML = msg;
         return false;
     }
     return true;
 }
 
-function checkemail(myform) {
+function checkemail() {
     var eobj = document.getElementById('emailerr');
     eobj.innerHTML = '';
     var error = false;
+    var msg;
     var z = document.forms["myform"]["email"].value;
     var atpos = z.indexOf("@");
     var dotpos = z.lastIndexOf(".");
 
     if (z == null || z == "") {
-        error = "Error: Email-Id must be field out";
-        myform.email.focus();
+        msg = "Error: Email-Id must be field out";
+       error = true;
 
     }
     else if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= z.length) {
-        error = 'Error:Not a valid e-mail address';
+        msg = 'Error:Not a valid e-mail address';
+        error = true;
     }
     if (error) {
         myform.email.focus();
-        eobj.innerHTML = error;
+        eobj.innerHTML = msg;
         return false;
     }
     return true;
 }
 
-function checkpassword(myform) {
+function checkpassword() {
     var eobj = document.getElementById('passworderr');
 
     var minLength = 6;
     JSON.stringify('minLength');
     var space = ' ';
+    var msg;
     var error = false;
     eobj.innerHTML = '';
     var b = document.forms["myform"]["password"].value;
 
     if (b.length < 1) {
-        error = 'Please enter your password.';
+        msg = 'Please enter your password.';
+        error = true;
     }
     else if (b.length < minLength) {
-        error = 'Your password must be at least ' + minLength + ' characters long. Try again.';
+        msg = 'Your password must be at least ' + minLength + ' characters long. Try again.';
+        error = true;
     }
     else if (b.indexOf(space) > -1) {
-        error = 'Sorry, spaces are not allowed.';
+        msg = 'Sorry, spaces are not allowed.';
+        error = true;
     }
     if (error) {
         myform.password.focus();
-        eobj.innerHTML = error;
+        eobj.innerHTML = msg;
         return false
     }
 
@@ -162,78 +196,67 @@ function checkphone() {
     var eobj = document.getElementById('phoneerr');
     eobj.innerHTML = '';
     var error = false;
+    var msg;
     var a = document.forms["myform"]["phone"].value;
     if (a == null || a == "") {
-        error = "Error:Phone No. must be field out";
-        myform.phone.focus();
+        msg = "Error:Phone No. must be field out";
+        error= true;
     }
     else if (re1.test(document.forms["myform"]['phone'].value) != true) {
-        error = "Error:Enter digits in Phone no.";
+        msg = "Error:Enter digits in Phone no.";
+        error = true;
     }
     else if (a.length < 10) {
-        error = "Error: Phone no Must have 10 digits! ";
+        msg = "Error: Phone no Must have 10 digits! ";
+        error = true;
+    }
+    else if (a.length > 10) {
+        msg = "Error: Phone no Must have 10 digits! ";
+        error = true;
     }
     if (error) {
-        eobj.innerHTML = error;
+        eobj.innerHTML = msg;
         myform.phone.focus();
         return false;
     }
     return true;
 }
 
-function checkdob(myform) {
+function checkdob() {
     var eobj = document.getElementById('doberr');
     eobj.innerHTML = '';
     var error = false;
+    var msg;
     var p = document.forms["myform"]['Day'].value;
     var q = document.forms["myform"]['Month'].value;
     var r = document.forms["myform"]['Year'].value;
     if (p == "0") {
-        error = "Error: select ur date of birth";
+        msg = "Error: select ur date of birth";
         myform.Day.focus();
+        error = true;
     }
 
     else if (q == "0") {
-        error = "Error: select ur date of birth";
+        msg = "Error: select ur date of birth";
         myform.Month.focus();
+        error = true;
     }
 
     else if (r == "0") {
-        error = "Error: select ur date of birth";
+        msg = "Error: select ur date of birth";
         myform.Year.focus();
+        error = true;
     }
     if (error) {
-        eobj.innerHTML = error;
+        eobj.innerHTML = msg;
         return false;
     }
     return true;
 
 
-
 }
 
-/* if(rtn)
- {
- var data = {};
- data.firstname = x;
- data.lastname = y;
- data.email = z;
- data.password = b;
- data.gender = getGenderValue();
- data.phone = a;
- data.dob = (p + "-" + q + "-" + r );
- if (typeof test == "string") {
- test = JSON.parse(test);
- console.log(test);
- console.log(typeof (test));
- }
- test.push(data);
- localStorage.test = JSON.stringify(test);
 
- showData();
-
- }
- */
 
 
 
