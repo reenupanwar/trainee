@@ -1,0 +1,132 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="webstyle.css">
+    <script src="webstorage.js"></script>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <h1 id="reg">Registration Form</h1>
+    </div>
+    <div id="container">
+
+        <div id="leftcontent">
+            <form  action=" " name="myform">
+                <div class= "btn">
+                    <div class= "left">
+                    </div>
+                    <div class= "right">
+                        <input type= "hidden" name= "hidden" >
+                        </div>
+                    </div>
+                <div class="btn">
+                    <div class="left">
+                        First Name
+                    </div>
+                    <div class="right">
+                        <input type="text" name="fname" class="txtstyle">
+                    </div>
+
+                </div>
+                <div class="btn">
+                    <div class="left">
+                        Last Name
+                    </div>
+                    <div class="right">
+                        <input type="text" name="lname" class="txtstyle">
+                    </div>
+
+                </div>
+                <div class="btn">
+                    <div class="left">
+                        Email-Id
+                    </div>
+                    <div class="right">
+                        <input type="text" name="email" class="txtstyle">
+                    </div>
+
+                </div>
+                <div class="btn">
+                    <div class="left">
+                        Password
+                    </div>
+                    <div class="right">
+                        <input type="password" name="password" class="txtstyle">
+                    </div>
+
+                </div>
+                <div class="btn">
+                    <div class="left">
+                        Gender
+                    </div>
+                    <div class="right">
+                        <input type="radio" name="gender" value="male" id = "male">Male
+                        <input type="radio" name="gender" value="female" id= "female"> Female
+                    </div>
+
+                </div>
+                <div class="btn">
+                    <div class="left">
+                        Phone No.
+                    </div>
+                    <div class="right">
+                        <input type="text" name="phone" class="txtstyle">
+
+                    </div>
+                    <span id="phoneerr"></span>
+                </div>
+                <div class="btn">
+                    <div class="left">
+                        Date of Birth
+                    </div>
+                    <div class="right">
+                         <input type="date" name="bday" class="txtstyle">
+
+                    </div>
+
+                </div>
+
+                <div class="btn">
+                    <input type="submit" value="submit" onclick="insert();">
+                   <!-- <button type="reset" value="reset" style="height: 20px;
+                    width: 50px;" onclick="reset();">reset  </button> -->
+                    <input type="submit" value="show" onclick="show(event);">
+                    <input type="submit" value="Update" onclick="update(event);">
+                     <input type="submit" value="Droptable" onclick="droptable();">
+                </div>
+
+
+            </form>
+        </div>
+            <div id="rightcontent">
+             <table border="1">
+                 <thead id= "tablehd">
+                 <tr>
+                     <th>ID</th>
+                     <th>First name</th>
+                     <th> Last Name</th>
+                     <th>Email-ID</th>
+                     <th>Password</th>
+                     <th>Gender</th>
+                     <th>Phone</th>
+                     <th>DOB</th>
+                     <th>Edit</th>
+                     <th>Delete</th>
+                 </tr>
+                 </thead>
+                 <tbody  id="tablebody"></tbody>
+             </table>
+            </div>
+
+
+
+    </div>
+    <div id="footer">
+
+    </div>
+</div>
+
+
+</body>
+</html>

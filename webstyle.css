@@ -1,0 +1,108 @@
+#main{
+    height: 500px;
+    width: 1000px;
+}
+#header{
+    height: 50px;
+    width: 1000px;
+
+}
+#container{
+    height: 400px;
+    width: 1000px;
+}
+
+#reg{
+    text-align:left;
+    margin-left: 50px;
+}
+#leftcontent{
+    height: 400px;
+    width: 450px;
+    float: left;
+}
+#rightcontent{
+    height: 400px;
+    width: 550px;
+    float: left;
+}
+.left{
+    height: 22px;
+    width: 30%;
+    margin-left: 10px;
+     float: left;
+    font-size: 24px;
+}
+.right{
+    height: 22px;
+    width: 30%;
+    float: left;
+    margin-left: 10px;
+}
+#fnameerr{
+    height: 22px;;
+    width: 30%;
+    float: left;
+}
+#lnameerr{
+    height: 22px;;
+    width: 30%;
+    float: left;
+}
+#emailerr{
+    height: 22px;;
+    width: 30%;
+    float: left;
+}
+#passworderr{
+    height: 22px;;
+    width: 30%;
+    float: left;
+}
+#gendererr{
+    height: 22px;;
+    width: 30%;
+    float: left;
+}
+#phoneerr{
+    height: 22px;;
+    width: 30%;
+    float: left;
+}
+#doberr{
+    height: 22px;;
+    width: 30%;
+    float: left;
+}
+.txtstyle{
+    height: 25px;
+    width: 200px;
+    border-color: maroon;
+}
+#dd{
+    height: 25px;
+    width: 50px;
+    border-color: maroon;
+    float: left;
+}
+#mm{
+    height: 25px;
+    width: 75px;
+    border-color: maroon;
+    float: left;
+}
+#yy{
+    height: 25px;
+    width: 75px;
+    border-color: maroon;
+    float: left;
+}
+.btn{
+    height: 9%;
+    width: 450px;
+}
+.submit{
+    border-color: maroon;
+    margin-left: 220px;
+
+}
