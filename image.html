@@ -11,19 +11,21 @@
         var imgdata = '';
         var imgname = '';
 
-        function insert() {
-            console.log(imgname);
-            console.log('=============',imgdata);
+        function insert()
+        {
             db.transaction(function (tx) {
                 tx.executeSql("INSERT INTO imgee(image_name,image_data)" +
                         "VALUES(?, ? )",
-                        [imgname, imgdata]);
+                        [imgname, imgdata]
 
-            }, function () {
-                console.log("in error callback");
+            , show(),
+                        function()
+                { console.log("in error callback");
+
+                });
             });
-
         }
+
 
         var openFile = function (event) {
             document.getElementById('imageUploadSpan').innerHTML="";
@@ -63,9 +65,9 @@
                     }
                     //console.log(newrow);
                     document.getElementById('tablebody').innerHTML +=newrow;
-
-
-                }, function() {
+ },function()
+   {},
+                        function() {
                     console.log("in error callback");
                 });
             });
@@ -77,7 +79,7 @@
                     tx.executeSql('DELETE FROM imgee WHERE id=?', [id], function(tx)
                     {
                         alert("Row deleted");
-                    },function()
+                    },show(),function()
                     { console.log("in error callback");
 
                     });
@@ -95,8 +97,16 @@
                                 document.getElementById('hidden').value =  item['id']
                                 console.log(document.getElementById('imageUpload'));
                                 console.log(item['image_name']);
+                                if(item['image_name']=='')
+                                { document.getElementById('imageUploadSpan').innerHTML = "No file chosen";
+                                    document.getElementById('imageUpload').style.width = "90px";
+
+                                }
+                                else
+                                {
                                 document.getElementById('imageUploadSpan').innerHTML = item['image_name'];
                                 document.getElementById('imageUpload').style.width = "90px";
+                                }
                             }
                         }
 
@@ -132,6 +142,18 @@
                                     });
                         });
             }
+
+
+        }
+        function loadandreset()
+        {
+            insert();
+            reset();
+        }
+        function reset()
+        {
+              document.getElementById('imageUploadSpan').innerHTML = "No file chosen";
+                document.getElementById('imageUpload').style.width = "90px";
 
 
         }
