@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var db = openDatabase('imagee', '1.0', 'trialdb', 200000000);
+        db.transaction(function (tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS img11(id INTEGER PRIMARY KEY   AUTOINCREMENT,image_name TEXT,' +
+                    'image_data BLOB)', []);
+        });
+
+
+        var imgdata = '';
+        var imgname = '';
+
+        function insert()
+        {
+            db.transaction(function (tx) {
+                tx.executeSql("INSERT INTO img11(image_name,image_data)" +
+                        "VALUES(?, ? )",
+                        [imgname, imgdata]
+
+                        , show(),
+                        function()
+                        { console.log("in error callback");
+
+                        });
+            });
+        }
+
+
+        var openFile = function (event) {
+            document.getElementById('imageUploadSpan').innerHTML="";
+            document.getElementById('imageUpload').style.width = "auto";
+            var input = event.target;
+            console.log(input);
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                // console.log('enter uin the ');
+                var dataURL = event.target.result;
+                imgdata = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+            console.log(input.files[0]);
+
+            imgname = input.files[0].name;
+        };
+        function show()
+        {
+            document.getElementById('tablebody').innerHTML = "";
+            db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM img11', [], function (tx, results) {
+                            var newrow = '';
+                            console.log(results.rows.length);
+                            if(results.rows.length>0)
+                            {   var output = document.getElementById('output');
+                                for(var i= 0,item=null;i<results.rows.length;i++)
+                                {
+                                    item = results.rows.item(i);
+                                    var newrow = newrow+ "<tr><td>" + item['id'] +
+                                            "</td><td><img src=" +item['image_data']+ " height='100' width = '100';/>"
+                                            + "</td><td>" + "<input type='button' onclick='disablebtn1(), edit("+ item['id'] +");' value= Edit> " +
+                                            "</td><td>" +  "<input type='button' onclick='deleterow("+ item['id']+");' value= Delete> " + "</td></tr>"
+
+
+                                }
+                            }
+                            //console.log(newrow);
+                            document.getElementById('tablebody').innerHTML +=newrow;
+                        },function()
+                        {},
+                        function() {
+                            console.log("in error callback");
+                        });
+            });
+
+        }
+        function deleterow (id)
+        { db.transaction(
+                function (tx) {
+                    tx.executeSql('DELETE FROM img11 WHERE id=?', [id], function(tx)
+                    {
+                        alert("Row deleted");
+                    },show(),function()
+                    { console.log("in error callback");
+
+                    });
+                });
+        }
+        function edit(id)
+        {     db.transaction(
+                function(tx){
+                    tx.executeSql('SELECT * FROM img11 WHERE id=?', [id],function(tx , result)
+                    {  if(result.rows.length>0)
+                    {
+                        for(var i= 0,item=null;i<1;i++)
+                        {
+                            item = result.rows.item(i);
+                            document.getElementById('hidden').value =  item['id']
+                            console.log(document.getElementById('imageUpload'));
+                            console.log(item['image_name']);
+                            if(item['image_name']=='')
+                            { document.getElementById('imageUploadSpan').innerHTML = "No file chosen";
+                                document.getElementById('imageUpload').style.width = "90px";
+
+                            }
+                            else
+                            {
+                                document.getElementById('imageUploadSpan').innerHTML = item['image_name'];
+                                document.getElementById('imageUpload').style.width = "90px";
+                            }
+                        }
+                    }
+
+                    }, function()
+                    {
+                        console.log("in error Callback");
+                    });
+                });
+        }
+        function disablebtn1()
+        {  document.getElementById("btn1").disabled=true;
+            document.getElementById("btn3").disabled=false;
+
+        }
+
+        function update(event)
+        { var id = document.getElementById('hidden').value;
+            console.log(id);
+            if(id==0)
+            {
+                alert("no record is selected!")
+            }
+            else
+            {
+                db.transaction(
+                        function(tx){
+                            console.log('hello');
+                            tx.executeSql('UPDATE img11 SET image_name=?, image_data=? WHERE id=?',[imgname,imgdata, id]
+                                    ,loadandreset()
+                                    ,function()
+                                    { console.log("in error callback");
+
+                                    });
+                        });
+            }
+
+
+        }
+        function loadandreset()
+        {
+            insert();
+            reset();
+        }
+        function reset()
+        {
+            document.getElementById('imageUploadSpan').innerHTML = "No file chosen";
+            document.getElementById('imageUpload').style.width = "90px";
+
+
+        }
+        function disablebtn3()
+        {   document.getElementById("btn1").disabled=false;
+            document.getElementById("btn3").disabled=true;
+
+        }
+
+    </script>
+</head>
+<body>
+<input type="hidden" id="hidden">
+<input id="imageUpload" type='file' accept='image/*' onchange='openFile(event)' name= 'pic'/><span id="imageUploadSpan"></span><br>
+<img id='output'>
+<input id= 'btn1' type="submit" value="Insert" onclick=" insert();">
+<input id = 'btn2' type="submit" value="Show" onclick="show();">
+<input id = 'btn3'  disabled  type="submit" value="Update" onclick="update(event), disablebtn3()">
+<table>
+    <thead></thead>
+    <tbody id="tablebody"></tbody>
+</table>
+</body>
+</html>
