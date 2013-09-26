@@ -11,7 +11,9 @@
 
         var imgdata = '';
         var imgname = '';
-
+        function Errmsg()
+                      { console.log("in error callback");
+                      }
         function insert()
         {
             db.transaction(function (tx) {
@@ -19,11 +21,8 @@
                         "VALUES(?, ? )",
                         [imgname, imgdata]
 
-                        , show(),
-                        function()
-                        { console.log("in error callback");
-
-                        });
+                        , show(), Errmsg()
+              );
             });
         }
 
@@ -68,9 +67,7 @@
                             document.getElementById('tablebody').innerHTML +=newrow;
                         },function()
                         {},
-                        function() {
-                            console.log("in error callback");
-                        });
+                        Errmsg());
             });
 
         }
@@ -80,10 +77,7 @@
                     tx.executeSql('DELETE FROM img11 WHERE id=?', [id], function(tx)
                     {
                         alert("Row deleted");
-                    },show(),function()
-                    { console.log("in error callback");
-
-                    });
+                    },show(),Errmsg());
                 });
         }
         function edit(id)
@@ -111,10 +105,7 @@
                         }
                     }
 
-                    }, function()
-                    {
-                        console.log("in error Callback");
-                    });
+                    }, Errmsg());
                 });
         }
         function disablebtn1()
@@ -137,10 +128,7 @@
                             console.log('hello');
                             tx.executeSql('UPDATE img11 SET image_name=?, image_data=? WHERE id=?',[imgname,imgdata, id]
                                     ,loadandreset()
-                                    ,function()
-                                    { console.log("in error callback");
-
-                                    });
+                                    ,Errmsg());
                         });
             }
 
