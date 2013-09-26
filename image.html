@@ -26,6 +26,8 @@
         }
 
         var openFile = function (event) {
+            document.getElementById('imageUploadSpan').innerHTML="";
+            document.getElementById('imageUpload').style.width = "auto";
             var input = event.target;
             console.log(input);
             var reader = new FileReader();
@@ -109,6 +111,7 @@
             document.getElementById("btn3").disabled=false;
 
         }
+
         function update(event)
         { var id = document.getElementById('hidden').value;
             console.log(id);
@@ -122,13 +125,19 @@
                         function(tx){
                             console.log('hello');
                             tx.executeSql('UPDATE imgee SET image_name=?, image_data=? WHERE id=?',[imgname,imgdata, id]
-                                    ,function()
+                                    ,loadandreset()
+                                   ,function()
                                     { console.log("in error callback");
 
                                     });
                         });
             }
 
+
+        }
+        function disablebtn3()
+        {   document.getElementById("btn1").disabled=false;
+            document.getElementById("btn3").disabled=true;
 
         }
 
@@ -140,7 +149,7 @@
 <img id='output'>
 <input id= 'btn1' type="submit" value="Insert" onclick=" insert();">
 <input id = 'btn2' type="submit" value="Show" onclick="show();">
-<input id = 'btn3'  disabled  type="submit" value="Update" onclick="update(event);">
+<input id = 'btn3'  disabled  type="submit" value="Update" onclick="update(event), disablebtn3()">
 <table>
     <thead></thead>
     <tbody id="tablebody"></tbody>
