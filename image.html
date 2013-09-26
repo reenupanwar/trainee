@@ -37,11 +37,42 @@
             reader.readAsDataURL(input.files[0]);
             imgname = input.files[0].name;
         };
+        function show()
+        {  document.getElementById('tablebody').innerHTML = "";
+            db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM imgee', [], function (tx, results) {
+                    var newrow = '';
+                    //console.log(results.rows.length);
+                    if(results.rows.length>0)
+                    {
+                        for(var i= 0,item=null;i<results.rows.length;i++)
+                        {
+                            item = results.rows.item(i);
+                            var newrow = newrow+ "<tr><td>" + item['id'] +
+                                    "</td><td>" + "<img src= ''  + item['image'] + ''/>"
+                                    + "</td><td>" + "<input type='button' onclick='edit("+ item['id'] +");' value= Edit> " +
+                                    "</td><td>" +  "<input type='button' onclick='deleterow("+ item['id']+");' value= Delete> " + "</td></tr>"
+                            // console.log(newrow);
+                        }
+                    }
+                    document.getElementById('tablebody').innerHTML +=newrow;
+
+                }, function() {
+                    console.log("in error callback");
+                });
+            });
+
+        }
     </script>
 </head>
 <body>
 <input type='file' accept='image/*' onchange='openFile(event)'><br>
 <img id='output'>
 <input type="submit" value="Insert" onclick="insert();">
+<input type="submit" value="Show" onclick="show();">
+<table>
+    <thead></thead>
+    <tbody id="tablebody"></tbody>
+</table>
 </body>
 </html>
