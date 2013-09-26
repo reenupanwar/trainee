@@ -1,0 +1,47 @@
+<html>
+<head>
+    <script>
+        var db = openDatabase('imagee', '1.0', 'trialdb', 200000000);
+        db.transaction(function (tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS imgee(id INTEGER PRIMARY KEY   AUTOINCREMENT,image_name TEXT,' +
+                    'image_data BLOB)', []);
+        });
+
+
+        var imgdata = '';
+        var imgname = '';
+
+        function insert() {
+            console.log(imgname);
+            console.log('=============',imgdata);
+            db.transaction(function (tx) {
+                tx.executeSql("INSERT INTO imgee(image_name,image_data)" +
+                        "VALUES(?, ? )",
+                        [imgname, imgdata]);
+
+            }, function () {
+                console.log("in error callback");
+            });
+
+        }
+
+        var openFile = function (event) {
+            var input = event.target;
+            console.log(input);
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                console.log('enter uin the ');
+                var dataURL = event.target.result;
+                imgdata = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+            imgname = input.files[0].name;
+        };
+    </script>
+</head>
+<body>
+<input type='file' accept='image/*' onchange='openFile(event)'><br>
+<img id='output'>
+<input type="submit" value="Insert" onclick="insert();">
+</body>
+</html>
