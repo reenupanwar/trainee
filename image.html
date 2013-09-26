@@ -30,7 +30,7 @@
             console.log(input);
             var reader = new FileReader();
             reader.onload = function (event) {
-                console.log('enter uin the ');
+               // console.log('enter uin the ');
                 var dataURL = event.target.result;
                 imgdata = dataURL;
             };
@@ -52,14 +52,14 @@
                         {
                             item = results.rows.item(i);
                             var newrow = newrow+ "<tr><td>" + item['id'] +
-                                    "</td><td><img src=" +item['image_data']+"  , height='100' width = '100';/>"
-                                    + "</td><td>" + "<input type='button' onclick='edit("+ item['id'] +");' value= Edit> " +
+                                    "</td><td><img src=" +item['image_data']+ " height='100' width = '100';/>"
+                                    + "</td><td>" + "<input type='button' onclick='disablebtn1(), edit("+ item['id'] +");' value= Edit> " +
                                     "</td><td>" +  "<input type='button' onclick='deleterow("+ item['id']+");' value= Delete> " + "</td></tr>"
 
 
                         }
                     }
-                    console.log(newrow);
+                    //console.log(newrow);
                     document.getElementById('tablebody').innerHTML +=newrow;
 
 
@@ -90,20 +90,11 @@
                             for(var i= 0,item=null;i<1;i++)
                             {
                                 item = result.rows.item(i);
-
-//                                document.getElementsByName('pic').value = item['image_name'];
-                                console.log(item['image_name']);
+                                document.getElementById('hidden').value =  item['id']
                                 console.log(document.getElementById('imageUpload'));
-
+                                console.log(item['image_name']);
                                 document.getElementById('imageUploadSpan').innerHTML = item['image_name'];
                                 document.getElementById('imageUpload').style.width = "90px";
-                                //document.getElementsByName('pic').src = item['image_name'];
-                                /*console.log(item['image_name']);
-                                fileReader = new FileReader()
-
-                                fileReader.onload = function (event) {
-                                    document.getElementById("uploadPreview").src = event.target.result;
-                                };*/
                             }
                         }
 
@@ -113,13 +104,43 @@
                     });
                 });
         }
+        function disablebtn1()
+        {  document.getElementById("btn1").disabled=true;
+            document.getElementById("btn3").disabled=false;
+
+        }
+        function update(event)
+        { var id = document.getElementById('hidden').value;
+            console.log(id);
+            if(id==0)
+            {
+                alert("no record is selected!")
+            }
+            else
+            {
+                db.transaction(
+                        function(tx){
+                            console.log('hello');
+                            tx.executeSql('UPDATE imgee SET image_name=?, image_data=? WHERE id=?',[imgname,imgdata, id]
+                                    ,function()
+                                    { console.log("in error callback");
+
+                                    });
+                        });
+            }
+
+
+        }
+
     </script>
 </head>
 <body>
+<input type="hidden" id="hidden">
 <input id="imageUpload" type='file' accept='image/*' onchange='openFile(event)' name= 'pic'/><span id="imageUploadSpan"></span><br>
 <img id='output'>
-<input type="submit" value="Insert" onclick="insert();">
-<input type="submit" value="Show" onclick="show();">
+<input id= 'btn1' type="submit" value="Insert" onclick=" insert();">
+<input id = 'btn2' type="submit" value="Show" onclick="show();">
+<input id = 'btn3'  disabled  type="submit" value="Update" onclick="update(event);">
 <table>
     <thead></thead>
     <tbody id="tablebody"></tbody>
