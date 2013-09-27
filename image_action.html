@@ -89,7 +89,7 @@
                         for(var i= 0,item=null;i<1;i++)
                         {
                             item = result.rows.item(i);
-                            document.getElementById('hidden').value =  item['id']
+                            document.getElementById('hidden').value =  item['id'] ;
                             console.log(document.getElementById('imageUpload'));
                             console.log(item['image_name']);
                             if(item['image_name']=='')
@@ -136,7 +136,7 @@
         }
         function loadandreset()
         {
-            insert();
+            show();
             reset();
         }
         function reset()
